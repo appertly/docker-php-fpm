@@ -2,10 +2,10 @@
 Docker image of PHP-FPM.
 
 ## Memcached Session Support
-You can enable the `memcached` session handler at runtime by either using a Docker `--link` to a container running Memcached, or you can supply a list of servers in an environment variable. When PHP-FPM starts, the settings will be written to `/etc/php/7.0/fpm/php.ini` to enable Memcached based session storage. (If neither is used, standard file-based session storage remains the default.)
+You can enable the `memcached` session handler at runtime by either using a Docker `--link` to a container running Memcached, or you can supply a list of servers in an environment variable. When PHP-FPM starts, the settings will be written to `/etc/php/7.1/fpm/php.ini` to enable Memcached based session storage. (If neither is used, standard file-based session storage remains the default.)
 
 ### Linked Docker Containers
-You may link a Memcached container using the name `memcached`. 
+You may link a Memcached container using the name `memcached`.
 ```bash
 docker run -d --name foobar memcached
 docker run -d --link foobar:memcached appertly/php-fpm
