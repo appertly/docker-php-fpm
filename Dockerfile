@@ -10,6 +10,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates git \
         php7.0-fpm php7.0-cli php7.0-gd php7.0-gmp php7.0-mcrypt php-imagick php7.0-mbstring php7.0-intl \
         php-memcached php7.0-mysql php7.0-pgsql php7.0-sqlite3 php7.0-curl php7.0-xml php7.0-zip php7.0-mongodb \
+        php7.0-xmlrpc php7.0-soap \
     && sed -i 's/^/#/' /etc/cron.d/php \
     && rm -rf /tmp/* /var/tmp/* \
     && rm -rf /var/lib/apt/lists/* \
