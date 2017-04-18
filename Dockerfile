@@ -26,6 +26,7 @@ RUN ln -sf /dev/stderr /var/log/php7.1-fpm.log \
 
 ADD php.ini /etc/php/7.1/fpm/php.ini
 ADD www.conf /etc/php/7.1/fpm/pool.d/www.conf
+ADD opcache.ini /etc/php/7.1/mods-available/opcache.ini
 ADD start.sh /scripts/start.sh
 RUN chmod +x /scripts/start.sh
 
