@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates git \
         php7.1-fpm php7.1-cli php7.1-opcache php7.1-gd php7.1-gmp php7.1-mcrypt php-imagick php7.1-mbstring php7.1-intl \
-        php-memcached php7.1-mysql php7.1-pgsql php7.1-sqlite3 php7.1-curl php7.1-xml php7.1-zip php7.1-mongodb \
+        php-memcached php7.1-pgsql php7.1-sqlite3 php7.1-curl php7.1-xml php7.1-zip php7.1-mongodb \
         php7.1-soap php7.1-xmlrpc \
     && sed -i 's/^/#/' /etc/cron.d/php \
     && rm -rf /tmp/* /var/tmp/* \
