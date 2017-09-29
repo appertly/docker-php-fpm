@@ -18,3 +18,4 @@ docker run -d -e "MEMCACHED=192.168.0.50:11211,192.168.0.60:11211" appertly/php-
 
 ## CA Certificates
 You can mount a volume to `/usr/local/share/ca-certificates` that contains any certificate authorities you wish to accept as trusted. Debian's `update-ca-certificates` is run before PHP-FPM executes.
+
