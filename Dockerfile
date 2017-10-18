@@ -3,7 +3,7 @@ MAINTAINER Jonathan Hawk <jonathan@appertly.com>
 
 # Install php
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends software-properties-common \
+    && apt-get install -y --no-install-recommends software-properties-common wget \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C \
     && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
     && apt-get update \
@@ -23,6 +23,12 @@ RUN apt-get update \
 RUN ln -sf /dev/stderr /var/log/php7.1-fpm.log \
     && mkdir -p /run/php \
     && echo "1" > /run/php/php7.1-fpm.pid
+
+RUN wget https://releases.pagure.org/liberation-fonts/liberation-fonts-ttf-2.00.0.tar.gz \
+    && tar zxvf liberation-fonts-ttf-2.00.0.tar.gz \
+    && mkdir /usr/share/fonts/truetype/liberation \
+    && cp liberation-fonts-ttf-2.00.0/*.ttf /usr/share/fonts/truetype/liberation \
+    && fc-cache -f -v
 
 ADD php.ini /etc/php/7.1/fpm/php.ini
 ADD www.conf /etc/php/7.1/fpm/pool.d/www.conf
