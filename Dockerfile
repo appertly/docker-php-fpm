@@ -12,6 +12,13 @@ RUN apt-get update \
         php5.6-ldap php5.6-mcrypt \
         php-memcached php5.6-mysql php5.6-pgsql php5.6-sqlite3 php5.6-curl php5.6-xml php5.6-zip php5.6-mongodb \
     && sed -i 's/^/#/' /etc/cron.d/php \
+    && buildDeps="libtool make php5.6-dev php-pear" \
+    && apt-get install -y --no-install-recommends $buildDeps \
+    && pecl install channel://pecl.php.net/apcu-4.0.11 \
+    && echo "extension=apcu.so" > /etc/php/5.6/mods-available/apcu.ini \
+    && phpenmod apcu \
+    && apt-get remove --purge -y --auto-remove $buildDeps \
+    && apt-get autoremove -y \
     && rm -rf /tmp/* /var/tmp/* \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/log/apt/* \
